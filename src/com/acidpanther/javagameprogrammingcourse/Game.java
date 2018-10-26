@@ -73,6 +73,7 @@ public class Game extends Canvas implements Runnable {
 			createBufferStrategy(3);
 			return;
 		}
+		screen.clear();
 		
 		screen.render();
 		
