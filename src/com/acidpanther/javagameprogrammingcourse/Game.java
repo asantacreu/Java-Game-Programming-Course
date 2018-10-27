@@ -32,6 +32,9 @@ public class Game extends Canvas implements Runnable {
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 	
+	private int x = 0;
+	private int y = 0;
+	
 	public Game() {
 		Dimension size = new Dimension(width * scale, height * scale);
 		setPreferredSize(size);
@@ -86,8 +89,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	private void update() {
-		// TODO Auto-generated method stub
-		
+		x++;
 	}
 	
 	private void render() {
@@ -98,7 +100,8 @@ public class Game extends Canvas implements Runnable {
 		}
 		screen.clear();
 		
-		screen.render();
+		
+		screen.render(x, y);
 		
 		for(int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
