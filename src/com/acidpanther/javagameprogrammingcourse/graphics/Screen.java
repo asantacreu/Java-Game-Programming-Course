@@ -5,8 +5,9 @@ import java.util.Random;
 public class Screen {
 	private int width, height;
 	public int[] pixels;
-	
-	public int[] tiles = new int[64 * 64];
+	private final int MAP_SIZE = 64;
+	private final int MAP_SIZE_MASK = MAP_SIZE - 1;
+	public int[] tiles = new int[MAP_SIZE * MAP_SIZE];
 	
 	private Random random = new Random();
 	
@@ -26,15 +27,12 @@ public class Screen {
 		}
 	}
 	
-	public void render() {
+	public void render(int xOffset, int yOffset) {
 		for(int y = 0; y < height; y++) {
-			if (y < 0 || y >= height) break;
-			int yy = y;
+			int yy = y + yOffset;
 			for(int x = 0; x < width; x++) {
-				if (x < 0 || x >= width) break;
-				
-				int xx = x;
-				int tileIndex = (x >> 4) + (y >> 4) * 64;
+				int xx = x + xOffset;
+				int tileIndex = ((xx >> 4) & MAP_SIZE_MASK) + ((yy >> 4) & MAP_SIZE_MASK) * MAP_SIZE;
 				pixels[x + y * width] = tiles[tileIndex];
 			}
 		}
