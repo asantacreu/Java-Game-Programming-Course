@@ -29,8 +29,12 @@ public class Screen {
 	
 	public void render(int xOffset, int yOffset) {
 		for(int y = 0; y < height; y++) {
+			int yy = (y + yOffset);
+			if(yy < 0 || yy >= height) continue;
 			for(int x = 0; x < width; x++) {
-				pixels[x + y * width] = Sprite.grass.pixels[(x&15) + (y&15) * Sprite.grass.SIZE];
+				int xx = (x + xOffset);
+				if(xx < 0 || xx >= width) continue;
+				pixels[xx + yy * width] = Sprite.grass.pixels[(x&15) + (y&15) * Sprite.grass.SIZE];
 			}
 		}
 	}
