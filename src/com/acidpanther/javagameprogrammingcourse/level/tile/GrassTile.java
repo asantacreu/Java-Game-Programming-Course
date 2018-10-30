@@ -3,21 +3,14 @@ package com.acidpanther.javagameprogrammingcourse.level.tile;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 
-public class Tile {
-	
-	public int x, y;
-	public Sprite sprite;
-	
-	public static Tile grass = new GrassTile(Sprite.grass);
-	
-	public Tile(Sprite sprite) {
-		this.sprite = sprite;
+public class GrassTile extends Tile {
+
+	public GrassTile(Sprite sprite) {
+		super(sprite);
 	}
 	
 	public void render(int x, int y, Screen screen) {
+		//Do render stuff here!
 	}
-	
-	public boolean solid() {
-		return false;
-	}
+
 }
