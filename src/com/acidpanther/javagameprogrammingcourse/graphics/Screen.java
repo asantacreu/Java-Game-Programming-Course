@@ -5,7 +5,7 @@ import java.util.Random;
 import com.acidpanther.javagameprogrammingcourse.level.tile.Tile;
 
 public class Screen {
-	private int width, height;
+	public int width, height;
 	public int[] pixels;
 	private final int MAP_SIZE = 64;
 	private final int MAP_SIZE_MASK = MAP_SIZE - 1;
