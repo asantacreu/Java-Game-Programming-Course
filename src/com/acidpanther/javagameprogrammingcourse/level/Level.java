@@ -40,12 +40,12 @@ public class Level {
 		int y0 = yScroll >> 4;
 		int y1 = (yScroll + screen.height) >> 4;
 		
-		/*for(int x = x0; x < x1; x++) {
-			for(int y = y0;y < y1; y++) {
-				Tile tile = getTle(x, y);
-				tile.render(x*16, y*16, screen);
+		for(int y = y0;y < y1; y++) {
+			for(int x = x0; x < x1; x++) {
+				getTile(x, y).render(x, y, screen);
+				//screen.renderTile(x, y, getTile(x, y)); Same and Simpler?
 			}
-		}*/
+		}
 	}
 	
 	public Tile getTile(int x, int y) {
