@@ -37,13 +37,20 @@ public class Level {
 		int x1 = (xScroll + screen.width) >> 4;
 		int y0 = yScroll >> 4;
 		int y1 = (yScroll + screen.height) >> 4;
+		
+		/*for(int x = x0; x < x1; x++) {
+			for(int y = y0;y < y1; y++) {
+				Tile tile = getTle(x, y);
+				tile.render(x*16, y*16, screen);
+			}
+		}*/
 	}
 	
 	public Tile getTile(int x, int y) {
 		if(tiles[x + y * width] == 0){
 			return Tile.grass;
 		}
-		return null;
+		return Tile.voidTile;
 	}
 	
 }
