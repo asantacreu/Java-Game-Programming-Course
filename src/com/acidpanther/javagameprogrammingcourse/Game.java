@@ -10,6 +10,7 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import com.acidpanther.javagameprogrammingcourse.entity.mob.Player;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.input.Keyboard;
 import com.acidpanther.javagameprogrammingcourse.level.Level;
@@ -30,15 +31,13 @@ public class Game extends Canvas implements Runnable {
 	private JFrame frame;
 	private Keyboard key;
 	private Level level;
+	private Player player;
 	private boolean running = false;
 	
 	private Screen screen;
 	
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
-	
-	private int x = 0;
-	private int y = 0;
 	
 	public Game() {
 		Dimension size = new Dimension(width * scale, height * scale);
@@ -51,6 +50,7 @@ public class Game extends Canvas implements Runnable {
 		addKeyListener(key);
 		
 		level = new RandomLevel(64, 64);
+		player = new Player(key);
 	}
 	
 	public synchronized void start() {
@@ -100,12 +100,7 @@ public class Game extends Canvas implements Runnable {
 
 	private void update() {
 		key.update();
-		
-		if(key.up) y--;
-		if(key.down) y++;
-		if(key.left) x--;
-		if(key.right) x++;
-		
+		player.update();
 	}
 	
 	private void render() {
@@ -115,7 +110,7 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		screen.clear();
-		level.render(x,  y,  screen);
+		level.render(player.x,  player.y,  screen);
 		
 		for(int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
