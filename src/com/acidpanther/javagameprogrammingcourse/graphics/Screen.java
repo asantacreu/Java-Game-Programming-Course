@@ -2,6 +2,7 @@ package com.acidpanther.javagameprogrammingcourse.graphics;
 
 import java.util.Random;
 
+import com.acidpanther.javagameprogrammingcourse.entity.mob.Player;
 import com.acidpanther.javagameprogrammingcourse.level.tile.Tile;
 
 public class Screen {
@@ -40,6 +41,24 @@ public class Screen {
 				if(xa < -tile.sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
 				if(xa < 0) xa = 0;
 				pixels[xa + ya * width] = tile.sprite.pixels[x + y *tile.sprite.SIZE];
+			}
+		}
+	}
+	
+	public void renderPlayer(int xp, int yp, Sprite sprite) {
+		xp -= xOffset;
+		yp -= yOffset;
+		
+		for(int y = 0; y < sprite.SIZE; y++) {
+			int ya = y + yp;
+			for(int x = 0; x < sprite.SIZE; x++) {
+				int xa = x + xp;
+				if(xa < - sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
+				if(xa < 0) xa = 0;
+				int col = sprite.pixels[x + y * sprite.SIZE];
+				if(col != 0xffff00ff) {
+					pixels[xa + ya * width] = col;
+				}
 			}
 		}
 	}

@@ -1,10 +1,13 @@
 package com.acidpanther.javagameprogrammingcourse.entity.mob;
 
+import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
+import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 import com.acidpanther.javagameprogrammingcourse.input.Keyboard;
 
 public class Player extends Mob{
 	
 	private Keyboard input;
+	
 	
 	public Player(Keyboard input) {
 		this.input = input;
@@ -27,8 +30,12 @@ public class Player extends Mob{
 		if((xa != 0) || (ya != 0)) move(xa, ya);
 	}
 	
-	public void render() {
-		
-	}
+	public void render(Screen screen) {
+		int xx = x - 16;
+		int yy = y - 16;
+		screen.renderPlayer(xx, yy, Sprite.player0);
+		screen.renderPlayer(xx+16, yy, Sprite.player1);
+		screen.renderPlayer(xx, yy+16, Sprite.player2);
+		screen.renderPlayer(xx+16, yy+16, Sprite.player3);}
 	
 }
