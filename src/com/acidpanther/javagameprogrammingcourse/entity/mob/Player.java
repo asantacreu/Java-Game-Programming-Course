@@ -8,6 +8,7 @@ public class Player extends Mob{
 	
 	private Keyboard input;
 	private Sprite sprite;
+	private int flipSprite;
 	
 	public Player(Keyboard input) {
 		this.input = input;
@@ -36,10 +37,12 @@ public class Player extends Mob{
 		updateSprite();
 		
 		int halfPlayerSize = (sprite.SIZE / 2);
-		screen.renderPlayer(x - halfPlayerSize, y - halfPlayerSize, sprite);
+		screen.renderPlayer(x - halfPlayerSize, y - halfPlayerSize, sprite, flipSprite);
 	}
 	
 	private void updateSprite() {
+		flipSprite = 0;
+		
 		switch(dir) {
 			case 0: 
 				sprite = Sprite.player_down;
@@ -52,6 +55,7 @@ public class Player extends Mob{
 				break;
 			case 3: 
 				sprite = Sprite.player_right;
+				flipSprite = 1;
 				break;
 		}
 	}
