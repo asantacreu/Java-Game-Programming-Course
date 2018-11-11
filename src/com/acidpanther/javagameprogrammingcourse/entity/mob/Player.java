@@ -7,16 +7,18 @@ import com.acidpanther.javagameprogrammingcourse.input.Keyboard;
 public class Player extends Mob{
 	
 	private Keyboard input;
-	
+	private Sprite sprite;
 	
 	public Player(Keyboard input) {
 		this.input = input;
+		sprite = Sprite.player_up;
 	}
 	
 	public Player(int x, int y, Keyboard input) {
 		this.x = x;
 		this.y = y;
 		this.input = input;
+		sprite = Sprite.player_up;
 	}
 	
 	public void update() {
@@ -31,9 +33,27 @@ public class Player extends Mob{
 	}
 	
 	public void render(Screen screen) {
-		Sprite playerSprite = Sprite.player;
-		int halfPlayerSize = (playerSprite.SIZE / 2);
-		screen.renderPlayer(x - halfPlayerSize, y - halfPlayerSize, playerSprite);
+		updateSprite();
+		
+		int halfPlayerSize = (sprite.SIZE / 2);
+		screen.renderPlayer(x - halfPlayerSize, y - halfPlayerSize, sprite);
+	}
+	
+	private void updateSprite() {
+		switch(dir) {
+			case 0: 
+				sprite = Sprite.player_down;
+				break;
+			case 1: 
+				sprite = Sprite.player_right;
+				break;
+			case 2: 
+				sprite = Sprite.player_up;
+				break;
+			case 3: 
+				sprite = Sprite.player_right;
+				break;
+		}
 	}
 	
 }
