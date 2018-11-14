@@ -6,12 +6,13 @@ import com.acidpanther.javagameprogrammingcourse.level.tile.Tile;
 public class Level {
 
 	protected int width, height;
+	protected int[] tilesInt;
 	protected int[] tiles;
 	
 	public Level(int width, int height) {
 		this.width = width;
 		this.height = height;
-		tiles = new int[width * height];
+		tilesInt = new int[width * height];
 		generateLevel();
 	}
 	
@@ -23,8 +24,9 @@ public class Level {
 		
 	}
 	
-	private void loadLevel(String path) {
+	protected void loadLevel(String path) {
 	}
+	
 	
 	public void update() {
 	}
@@ -43,7 +45,6 @@ public class Level {
 		for(int y = y0; y < y1; y++) {
 			for(int x = x0; x < x1; x++) {
 				getTile(x, y).render(x, y, screen);
-				//screen.renderTile(x, y, getTile(x, y)); Same and Simpler?
 			}
 		}
 	}
@@ -52,13 +53,13 @@ public class Level {
 		if(x < 0 || y < 0 || x >= width || y >= height) {
 			return Tile.voidTile;
 		} 
-		else if(tiles[x + y * width] == 0) {
+		else if(tiles[x + y * width] == 0xff00ff00) {
 			return Tile.grass;
 		}
-		else if(tiles[x + y * width] == 1) {
+		else if(tiles[x + y * width] == 0xffffff00) {
 			return Tile.flower;
 		}
-		else if(tiles[x + y * width] == 2) {
+		else if(tiles[x + y * width] == 0xff7f7f00) {
 			return Tile.rock;
 		}
 		return Tile.voidTile;

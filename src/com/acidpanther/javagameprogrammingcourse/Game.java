@@ -15,6 +15,7 @@ import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.input.Keyboard;
 import com.acidpanther.javagameprogrammingcourse.level.Level;
 import com.acidpanther.javagameprogrammingcourse.level.RandomLevel;
+import com.acidpanther.javagameprogrammingcourse.level.SpawnLevel;
 
 
 public class Game extends Canvas implements Runnable {
@@ -49,7 +50,7 @@ public class Game extends Canvas implements Runnable {
 		key = new Keyboard();
 		addKeyListener(key);
 		
-		level = new RandomLevel(64, 64);
+		level = new SpawnLevel("/textures/level.png");
 		player = new Player(key);
 	}
 	
