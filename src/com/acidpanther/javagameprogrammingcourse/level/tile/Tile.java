@@ -21,6 +21,13 @@ public class Tile {
 	public static Tile spawnWall2 = new SpawnWallTile(Sprite.spawnWall2);
 	public static Tile spawnFloor = new SpawnFloorTile(Sprite.spawnFloor);
 	
+	public final static int colorspawnGrass = 0xff00ff00;
+	public final static int colorspawnHedge = 0; //unused
+	public final static int colorspawnWater = 0; //unused
+	public final static int colorspawnWall1 = 0xff808080;
+	public final static int colorspawnWall2 = 0xff303030;
+	public final static int colorspawnFloor = 0xff724715;
+	
 	public Tile(Sprite sprite) {
 		this.sprite = sprite;
 	}
