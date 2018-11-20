@@ -16,6 +16,7 @@ import com.acidpanther.javagameprogrammingcourse.input.Keyboard;
 import com.acidpanther.javagameprogrammingcourse.level.Level;
 import com.acidpanther.javagameprogrammingcourse.level.RandomLevel;
 import com.acidpanther.javagameprogrammingcourse.level.SpawnLevel;
+import com.acidpanther.javagameprogrammingcourse.level.TileCoordinate;
 
 
 public class Game extends Canvas implements Runnable {
@@ -51,7 +52,9 @@ public class Game extends Canvas implements Runnable {
 		addKeyListener(key);
 		
 		level = Level.spawn;
-		player = new Player(16*6, 16*4, key);
+		
+		TileCoordinate playerSpawn = new TileCoordinate(6, 4);
+		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
 	}
 	
 	public synchronized void start() {
