@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import com.acidpanther.javagameprogrammingcourse.entity.mob.Player;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.input.Keyboard;
+import com.acidpanther.javagameprogrammingcourse.input.Mouse;
 import com.acidpanther.javagameprogrammingcourse.level.Level;
 import com.acidpanther.javagameprogrammingcourse.level.RandomLevel;
 import com.acidpanther.javagameprogrammingcourse.level.SpawnLevel;
@@ -50,6 +51,10 @@ public class Game extends Canvas implements Runnable {
 		
 		key = new Keyboard();
 		addKeyListener(key);
+		
+		Mouse mouse  = new Mouse();
+		addMouseListener(mouse);
+		addMouseMotionListener(mouse);
 		
 		level = Level.spawn;
 		
