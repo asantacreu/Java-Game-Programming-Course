@@ -32,6 +32,9 @@ public abstract class Mob extends Entity {
 		
 	}
 	
+	protected void shoot(int x, int y, double dir) {
+	}
+	
 	public void render() {
 		
 	}
