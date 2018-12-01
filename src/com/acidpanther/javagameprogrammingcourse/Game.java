@@ -23,10 +23,10 @@ import com.acidpanther.javagameprogrammingcourse.level.TileCoordinate;
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	
-	public static int width = 300;
-	public static int height = width / 16 * 9;
+	private static int width = 300;
+	private static int height = width / 16 * 9;
 	
-	public static int scale = 3;
+	private static int scale = 3;
 	
 	public static String title = "Java GP Course";
 	
@@ -43,7 +43,7 @@ public class Game extends Canvas implements Runnable {
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 	
 	public Game() {
-		Dimension size = new Dimension(width * scale, height * scale);
+		Dimension size = new Dimension(getScreenWidth(), getScreenHeight());
 		setPreferredSize(size);
 		
 		screen = new Screen(width, height);
@@ -61,6 +61,14 @@ public class Game extends Canvas implements Runnable {
 		TileCoordinate playerSpawn = new TileCoordinate(10, 6);
 		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
 		player.init(level);
+	}
+	
+	public static int getScreenWidth() {
+		return (width * scale);
+	}
+	
+	public static int getScreenHeight() {
+		return (height * scale);
 	}
 	
 	public synchronized void start() {

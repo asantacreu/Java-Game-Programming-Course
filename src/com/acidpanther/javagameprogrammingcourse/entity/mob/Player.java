@@ -1,5 +1,6 @@
 package com.acidpanther.javagameprogrammingcourse.entity.mob;
 
+import com.acidpanther.javagameprogrammingcourse.Game;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 import com.acidpanther.javagameprogrammingcourse.input.Keyboard;
@@ -49,8 +50,8 @@ public class Player extends Mob{
 
 	private void updateShooting() {
 		if(Mouse.getButton() == 1) {
-			double dx = (Mouse.getX() - 300/2);
-			double dy = (Mouse.getY() - 168/2);
+			double dx = (Mouse.getX() - (Game.getScreenWidth() / 2));
+			double dy = (Mouse.getY() - (Game.getScreenHeight() / 2));
 			double theta = Math.atan2(dy, dx);
 			shoot(x, y, theta);
 		}
