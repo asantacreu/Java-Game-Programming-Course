@@ -1,6 +1,11 @@
 package com.acidpanther.javagameprogrammingcourse.entity.mob;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.acidpanther.javagameprogrammingcourse.entity.Entity;
+import com.acidpanther.javagameprogrammingcourse.entity.projectile.Projectile;
+import com.acidpanther.javagameprogrammingcourse.entity.projectile.WizardProjectile;
 import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 
 public abstract class Mob extends Entity {
@@ -8,6 +13,9 @@ public abstract class Mob extends Entity {
 	protected Sprite sprite;
 	protected int dir = 0;
 	protected boolean moving = false;
+	protected boolean walking = false;
+	
+	protected List<Projectile> projectiles = new ArrayList<Projectile>();
 	
 	public void move(int xa, int ya) {
 		if(xa != 0 && ya != 0) {
@@ -29,10 +37,12 @@ public abstract class Mob extends Entity {
 	}
 	
 	public void update() {
-		
 	}
 	
 	protected void shoot(int x, int y, double dir) {
+		Projectile p = new WizardProjectile(x, y , dir);
+		projectiles.add(p);
+		level.add(p);
 	}
 	
 	public void render() {
