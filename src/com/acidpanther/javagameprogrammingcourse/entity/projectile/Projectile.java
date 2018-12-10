@@ -8,7 +8,7 @@ public abstract class Projectile extends Entity {
 
 	protected final int xOrigin, yOrigin;
 	protected double angle;
-	Tile sprite;
+	protected Sprite sprite;
 	protected double nx, ny;
 	protected double speed;
 	protected double rateOfFire;
@@ -22,6 +22,14 @@ public abstract class Projectile extends Entity {
 		xOrigin = x;
 		yOrigin = y;
 		angle = dir;
+	}
+	
+	public Sprite getSprite() {
+		return sprite;
+	}
+	
+	public int getSpriteSize() {
+		return sprite.SIZE;
 	}
 	
 	protected void move() {

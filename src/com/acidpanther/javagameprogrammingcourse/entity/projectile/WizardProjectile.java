@@ -13,7 +13,7 @@ public class WizardProjectile extends Projectile {
 		damage = 20;
 		rateOfFire = 15;
 		
-		sprite = Tile.grass;
+		sprite = Sprite.projectileWizard;
 		
 		nx = Math.cos(angle) * speed;
 		ny = Math.sin(angle) * speed;
@@ -29,7 +29,7 @@ public class WizardProjectile extends Projectile {
 	}
 	
 	public void render(Screen screen) {
-		screen.renderTile(x,  y, sprite);
+		screen.renderProjectile(x,  y, this);
 	}
 
 }

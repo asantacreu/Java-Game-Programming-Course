@@ -14,6 +14,7 @@ public class Sprite {
 	public static Sprite rock = new Sprite(16, 2, 0, SpriteSheet.tiles);
 	public static Sprite voidSprite = new Sprite(16, 0x000000);
 	
+	//Spawn Sprites:
 	public static Sprite spawnGrass = new Sprite(16, 0, 0, SpriteSheet.spawnLevel);
 	public static Sprite spawnHedge = new Sprite(16, 1, 0, SpriteSheet.spawnLevel);
 	public static Sprite spawnWater = new Sprite(16, 2, 0, SpriteSheet.spawnLevel);
@@ -21,6 +22,7 @@ public class Sprite {
 	public static Sprite spawnWall2 = new Sprite(16, 0, 2, SpriteSheet.spawnLevel);
 	public static Sprite spawnFloor = new Sprite(16, 1, 1, SpriteSheet.spawnLevel);
 	
+	//Player Sprites:
 	public static Sprite player_up = new Sprite(32, 0, 5, SpriteSheet.tiles);
 	public static Sprite player_down = new Sprite(32, 2, 5, SpriteSheet.tiles);
 	public static Sprite player_right = new Sprite(32, 1, 5, SpriteSheet.tiles);
@@ -33,6 +35,9 @@ public class Sprite {
 	
 	public static Sprite player_right_1 = new Sprite(32, 1, 6, SpriteSheet.tiles);
 	public static Sprite player_right_2 = new Sprite(32, 1, 7, SpriteSheet.tiles);
+	
+	//Projectile Sprites:
+	public static Sprite projectileWizard = new Sprite(16, 0, 0, SpriteSheet.projectileWizard);
 	
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		SIZE = size;
