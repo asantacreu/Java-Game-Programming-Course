@@ -1,6 +1,8 @@
 package com.acidpanther.javagameprogrammingcourse.entity.mob;
 
 import com.acidpanther.javagameprogrammingcourse.Game;
+import com.acidpanther.javagameprogrammingcourse.entity.projectile.Projectile;
+import com.acidpanther.javagameprogrammingcourse.entity.projectile.WizardProjectile;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 import com.acidpanther.javagameprogrammingcourse.input.Keyboard;
@@ -27,6 +29,8 @@ public class Player extends Mob{
 	}
 	
 	public void update() {
+		super.update();
+		
 		int xa = 0;
 		int ya = 0;
 		if(anim< 7500) { 
@@ -44,20 +48,23 @@ public class Player extends Mob{
 		if(walking) {
 			move(xa, ya);
 		}
-		
 		updateShooting();
 	}
+
+	
 
 	private void updateShooting() {
 		if(Mouse.getButton() == 1) {
 			double dx = (Mouse.getX() - (Game.getScreenWidth() / 2));
 			double dy = (Mouse.getY() - (Game.getScreenHeight() / 2));
 			double theta = Math.atan2(dy, dx);
-			shoot(x, y, theta);
+			shoot(new WizardProjectile(x, y , theta));
 		}
 	}
 
 	public void render(Screen screen) {
+		super.render(screen);
+		
 		updateSprite();
 		
 		int halfPlayerSize = (sprite.SIZE / 2);

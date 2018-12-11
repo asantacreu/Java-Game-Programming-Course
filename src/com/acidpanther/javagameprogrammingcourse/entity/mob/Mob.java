@@ -6,6 +6,7 @@ import java.util.List;
 import com.acidpanther.javagameprogrammingcourse.entity.Entity;
 import com.acidpanther.javagameprogrammingcourse.entity.projectile.Projectile;
 import com.acidpanther.javagameprogrammingcourse.entity.projectile.WizardProjectile;
+import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 
 public abstract class Mob extends Entity {
@@ -15,7 +16,7 @@ public abstract class Mob extends Entity {
 	protected boolean moving = false;
 	protected boolean walking = false;
 	
-	protected List<Projectile> projectiles = new ArrayList<Projectile>();
+	private List<Projectile> projectiles = new ArrayList<Projectile>();
 	
 	public void move(int xa, int ya) {
 		if(xa != 0 && ya != 0) {
@@ -37,16 +38,29 @@ public abstract class Mob extends Entity {
 	}
 	
 	public void update() {
+		clearProjectiles();
+		for(int i = 0; i < projectiles.size(); i++) {
+			projectiles.get(i).update();
+		}
 	}
 	
-	protected void shoot(int x, int y, double dir) {
-		Projectile p = new WizardProjectile(x, y , dir);
+	private void clearProjectiles() {
+		for(int i = 0; i < projectiles.size(); i++) {
+			Projectile p = projectiles.get(i);
+			if(p.isRemoved()) {
+				projectiles.remove(i);
+			}
+		}
+	}
+	
+	protected void shoot(Projectile p) {
 		projectiles.add(p);
-		level.add(p);
 	}
 	
-	public void render() {
-		
+	public void render(Screen screen) {
+		for(int i = 0; i < projectiles.size(); i++) {
+			projectiles.get(i).render(screen);
+		}
 	}
 	
 	private boolean collision(int xa, int ya) {
