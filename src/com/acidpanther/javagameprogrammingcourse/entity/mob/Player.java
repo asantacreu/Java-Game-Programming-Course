@@ -16,6 +16,8 @@ public class Player extends Mob{
 	private int anim = 0;
 	private boolean walking = false;
 	
+	private int fireRate = 0;
+	
 	public Player(Keyboard input) {
 		this.input = input;
 		sprite = Sprite.player_down;
@@ -54,10 +56,17 @@ public class Player extends Mob{
 	
 
 	private void updateShooting() {
-		if(Mouse.getButton() == 1) {
+		if(fireRate > 0) {
+			fireRate--;
+		}
+		
+		if(Mouse.getButton() == 1 && fireRate <= 0) {
 			double dx = (Mouse.getX() - (Game.getScreenWidth() / 2));
 			double dy = (Mouse.getY() - (Game.getScreenHeight() / 2));
 			double theta = Math.atan2(dy, dx);
+			
+			fireRate = WizardProjectile.FIRE_RATE;
+			
 			shoot(new WizardProjectile(x, y , theta));
 		}
 	}
