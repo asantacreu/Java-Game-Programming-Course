@@ -35,7 +35,12 @@ public abstract class Projectile extends Entity {
 	}
 	
 	public void update() {
-		move();
+		if(level.tileCollision(x, y, nx, ny, 7/*sprite.SIZE*/)) {
+			remove();
+		}else {
+			move();	
+		}
+		
 	}
 	
 	protected void move() {

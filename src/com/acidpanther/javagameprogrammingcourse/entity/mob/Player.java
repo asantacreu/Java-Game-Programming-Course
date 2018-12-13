@@ -67,7 +67,9 @@ public class Player extends Mob{
 			
 			fireRate = WizardProjectile.FIRE_RATE;
 			
-			shoot(new WizardProjectile(x, y , theta));
+			WizardProjectile projectile = new WizardProjectile(x, y , theta);
+			projectile.init(level);
+			shoot(projectile);
 		}
 	}
 
