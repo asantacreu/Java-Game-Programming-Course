@@ -31,17 +31,35 @@ public class Screen {
 		}
 	}
 	
+	public void renderSprite(int xp, int yp, Sprite sprite, boolean fixed) {
+		if(fixed) {
+			xp -= xOffset;
+			yp -= yOffset;
+		}
+		
+		for(int y = 0; y < sprite.getHeight(); y++) {
+			int ya = y + yp;
+			for(int x = 0; x < sprite.getWidth(); x++) {
+				int xa = x + xp;
+				if(xa < -sprite.getWidth() || xa >= width || ya < 0 || ya >= height) break;
+				if(xa < 0) xa = 0;
+				pixels[xa + ya * width] = sprite.pixels[x + y *sprite.getWidth()];
+			}
+		}
+		
+	}
+	
 	public void renderTile(int xp, int yp, Tile tile) {
 		xp -= xOffset;
 		yp -= yOffset;
 		
-		for(int y = 0; y < tile.sprite.SIZE; y++) {
+		for(int y = 0; y < tile.sprite.getHeight(); y++) {
 			int ya = y + yp;
-			for(int x = 0; x < tile.sprite.SIZE; x++) {
+			for(int x = 0; x < tile.sprite.getWidth(); x++) {
 				int xa = x + xp;
-				if(xa < -tile.sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
+				if(xa < -tile.sprite.getWidth() || xa >= width || ya < 0 || ya >= height) break;
 				if(xa < 0) xa = 0;
-				pixels[xa + ya * width] = tile.sprite.pixels[x + y *tile.sprite.SIZE];
+				pixels[xa + ya * width] = tile.sprite.pixels[x + y *tile.sprite.getWidth()];
 			}
 		}
 	}
@@ -68,22 +86,22 @@ public class Screen {
 		xp -= xOffset;
 		yp -= yOffset;
 		
-		for(int y = 0; y < sprite.SIZE; y++) {
+		for(int y = 0; y < sprite.getHeight(); y++) {
 			int ya = y + yp;
 			int ys = y;
 			if(flip ==2 || flip ==3) {
-				ys = ((sprite.SIZE - 1) - y);
+				ys = ((sprite.getHeight() - 1) - y);
 			}
-			for(int x = 0; x < sprite.SIZE; x++) {
+			for(int x = 0; x < sprite.getWidth(); x++) {
 				int xa = x + xp;
 				int xs = x;
 				if(flip == 1 || flip == 3) {
-					xs = ((sprite.SIZE - 1) - x);
+					xs = ((sprite.getWidth() - 1) - x);
 				}
 					
-				if(xa < - sprite.SIZE || xa >= width || ya < 0 || ya >= height) break;
+				if(xa < - sprite.getWidth() || xa >= width || ya < 0 || ya >= height) break;
 				if(xa < 0) xa = 0;
-				int col = sprite.pixels[xs + ys * sprite.SIZE];
+				int col = sprite.pixels[xs + ys * sprite.getWidth()];
 				if(col != 0xffff00ff) {
 					pixels[xa + ya * width] = col;
 				}

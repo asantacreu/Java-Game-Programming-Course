@@ -78,7 +78,7 @@ public class Player extends Mob{
 		
 		updateSprite();
 		
-		int halfPlayerSize = (sprite.SIZE / 2);
+		int halfPlayerSize = (sprite.getWidth() / 2);
 		screen.renderPlayer(x - halfPlayerSize, y - halfPlayerSize, sprite, flipSprite);
 	}
 	
