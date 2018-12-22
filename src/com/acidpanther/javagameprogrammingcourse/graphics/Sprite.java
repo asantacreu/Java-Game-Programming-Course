@@ -40,6 +40,9 @@ public class Sprite {
 	//Projectile Sprites:
 	public static Sprite projectileWizard = new Sprite(16, 16, 0, 0, SpriteSheet.projectileWizard);
 	
+	//Particles
+	public static Sprite particle_normal = new Sprite(3, 3, 0xAAAAAA);
+	
 	public Sprite(int width, int height, int x, int y, SpriteSheet sheet) {
 		this.width = width;
 		this.height = height;
