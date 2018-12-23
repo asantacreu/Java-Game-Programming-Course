@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.acidpanther.javagameprogrammingcourse.entity.Entity;
 import com.acidpanther.javagameprogrammingcourse.entity.projectile.Projectile;
-import com.acidpanther.javagameprogrammingcourse.entity.projectile.WizardProjectile;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 

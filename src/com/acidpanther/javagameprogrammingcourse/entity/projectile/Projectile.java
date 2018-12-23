@@ -1,6 +1,7 @@
 package com.acidpanther.javagameprogrammingcourse.entity.projectile;
 
 import com.acidpanther.javagameprogrammingcourse.entity.Entity;
+import com.acidpanther.javagameprogrammingcourse.entity.particle.Particle;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 import com.acidpanther.javagameprogrammingcourse.level.tile.Tile;
@@ -36,6 +37,8 @@ public abstract class Projectile extends Entity {
 	
 	public void update() {
 		if(level.tileCollision(x, y, nx, ny, 7/*sprite.SIZE*/)) {
+			Particle p = new Particle((int) x, (int) y, 50, 500);
+			level.add(p);
 			remove();
 		}else {
 			move();	
