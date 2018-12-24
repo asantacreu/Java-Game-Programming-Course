@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.acidpanther.javagameprogrammingcourse.entity.Entity;
+import com.acidpanther.javagameprogrammingcourse.entity.Spawner;
 import com.acidpanther.javagameprogrammingcourse.level.tile.Tile;
 
 public class Level {
@@ -27,6 +28,8 @@ public class Level {
 	
 	public Level(String path) {
 		loadLevel(path);
+		
+		//add(new Spawner(16 * 16, 6 * 16, Spawner.Type.PARTICLE, 50, this));
 	}
 
 	protected void generateLevel() {
