@@ -1,8 +1,6 @@
-package com.acidpanther.javagameprogrammingcourse.entity;
+package com.acidpanther.javagameprogrammingcourse.entity.spawner;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.acidpanther.javagameprogrammingcourse.entity.Entity;
 import com.acidpanther.javagameprogrammingcourse.entity.particle.Particle;
 import com.acidpanther.javagameprogrammingcourse.level.Level;
 
@@ -16,10 +14,5 @@ public class Spawner extends Entity {
 		init(level);
 		this.x = x;
 		this.y = y;
-		for(int i = 0; i < amount; i++) {
-			if(type == Type.PARTICLE) {
-				level.add(new Particle(x, y, 50));
-			}
-		}
 	}
 }

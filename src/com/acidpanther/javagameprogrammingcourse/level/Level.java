@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.acidpanther.javagameprogrammingcourse.entity.Entity;
-import com.acidpanther.javagameprogrammingcourse.entity.Spawner;
 import com.acidpanther.javagameprogrammingcourse.level.tile.Tile;
 
 public class Level {
@@ -28,8 +27,6 @@ public class Level {
 	
 	public Level(String path) {
 		loadLevel(path);
-		
-		//add(new Spawner(16 * 16, 6 * 16, Spawner.Type.PARTICLE, 50, this));
 	}
 
 	protected void generateLevel() {
@@ -44,7 +41,17 @@ public class Level {
 		for(int i = 0; i < entities.size(); i++) {
 			entities.get(i).update();
 		}
+		clearEntities();
 	}
+	
+	private void clearEntities() {
+		for(int i = 0; i < entities.size(); i++) {
+			if(entities.get(i).isRemoved()){
+				entities.remove(i);
+			}		
+		}
+	}
+	
 	
 	private void time() {
 	} 
