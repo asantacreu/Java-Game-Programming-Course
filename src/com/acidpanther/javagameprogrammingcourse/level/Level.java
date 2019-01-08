@@ -90,6 +90,7 @@ public class Level {
 	}
 	
 	public void add(Entity e) {
+		e.init(this);
 		entities.add(e);
 	}
 	
