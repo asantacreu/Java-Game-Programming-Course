@@ -9,16 +9,50 @@ public class SpriteSheet {
 
 	private String path;
 	public final int SIZE;
+	public final int WIDTH, HEIGHT;
 	public int[] pixels;
 	
 	public static SpriteSheet tiles = new SpriteSheet("/textures/sheets/spritesheet.png", 256);
 	public static SpriteSheet spawnLevel = new SpriteSheet("/textures/sheets/spawn_level.png", 48);
 	public static SpriteSheet projectileWizard = new SpriteSheet("/textures/sheets/projectiles/wizard.png", 48);
 	
+	public static SpriteSheet player = new SpriteSheet("/textures/sheets/player_sheet.png", 128, 96);
+	public static SpriteSheet player_down = new SpriteSheet(player, 0, 0, 1, 3, 32);
+	
+	public SpriteSheet(SpriteSheet sheet, int x, int y, int width, int height, int spriteSize) {
+		SIZE = -1;
+		WIDTH = (width * spriteSize);
+		HEIGHT = (height * spriteSize);
+		pixels = new int[WIDTH * HEIGHT];
+		
+		int xx = (x * spriteSize);
+		int yy = (y * spriteSize);
+		for(int y0 = 0; y0 < HEIGHT; y0++) {
+			int yp = (yy + y0);
+			for(int x0 = 0; x0 < WIDTH; x0++) {
+				int xp = (xx + x0);
+				pixels[x0 + y0 * WIDTH] = sheet.pixels[xp + yp * sheet.WIDTH];
+			
+			}
+		}
+	}
+	
 	public SpriteSheet(String path, int size) {
 		this.path = path;
 		this.SIZE = size;
-		pixels = new int[SIZE * SIZE];
+		WIDTH = size;
+		HEIGHT = size;
+		pixels = new int[WIDTH * HEIGHT];
+		
+		load();
+	}
+	
+	public SpriteSheet(String path, int width, int height) {
+		this.path = path;
+		this.SIZE = -1;
+		WIDTH = width;
+		HEIGHT = height;
+		pixels = new int[WIDTH * HEIGHT];
 		
 		load();
 	}
