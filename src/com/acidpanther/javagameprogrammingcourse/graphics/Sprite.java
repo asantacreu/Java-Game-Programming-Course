@@ -8,7 +8,7 @@ public class Sprite {
 	
 	public int[] pixels;
 	
-	private SpriteSheet sheet;
+	protected SpriteSheet sheet;
 	
 	public static Sprite grass = new Sprite(16, 16, 0, 0, SpriteSheet.tiles);
 	public static Sprite flower = new Sprite(16, 16, 1, 0, SpriteSheet.tiles);
@@ -43,6 +43,12 @@ public class Sprite {
 	//Particles
 	public static Sprite particle_normal = new Sprite(3, 3, 0xAAAAAA);
 	
+	protected Sprite(SpriteSheet sheet, int width, int height) {
+		this.width = width;
+		this.height = height;
+		this.sheet = sheet;
+	}
+	
 	public Sprite(int width, int height, int x, int y, SpriteSheet sheet) {
 		this.width = width;
 		this.height = height;
@@ -58,6 +64,12 @@ public class Sprite {
 		this.height = height;
 		pixels = new int[width * height];
 		setColour(colour);
+	}
+	
+	public Sprite(int[] spritePixels, int width, int height) {
+		this.width = width;
+		this.height = height;
+		this.pixels = spritePixels;
 	}
 	
 	private void setColour(int colour) {

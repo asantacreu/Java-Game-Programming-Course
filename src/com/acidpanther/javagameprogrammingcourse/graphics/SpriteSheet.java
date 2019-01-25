@@ -19,6 +19,8 @@ public class SpriteSheet {
 	public static SpriteSheet player = new SpriteSheet("/textures/sheets/player_sheet.png", 128, 96);
 	public static SpriteSheet player_down = new SpriteSheet(player, 0, 0, 1, 3, 32);
 	
+	private Sprite[] sprites;
+	
 	public SpriteSheet(SpriteSheet sheet, int x, int y, int width, int height, int spriteSize) {
 		SIZE = -1;
 		WIDTH = (width * spriteSize);
@@ -33,6 +35,19 @@ public class SpriteSheet {
 				int xp = (xx + x0);
 				pixels[x0 + y0 * WIDTH] = sheet.pixels[xp + yp * sheet.WIDTH];
 			
+			}
+		}
+		int iframe = 0;
+		sprites = new Sprite[width * height];
+		for(int ya=0; ya < height; ya++) {
+			for(int xa=0; xa < width; xa++) {
+				int[] spritePixels = new int[spriteSize * spriteSize];
+				for(int y0=0; y0 < spriteSize; y0++) {
+					for(int x0=0; x0 < spriteSize; x0++) {
+						spritePixels[x0 + y0 * spriteSize] = pixels[(x0 + xa * spriteSize) + (y0 + ya * spriteSize) * WIDTH];
+					}
+				}
+				sprites[iframe++] = new Sprite(spritePixels, spriteSize, spriteSize);
 			}
 		}
 	}
@@ -68,5 +83,9 @@ public class SpriteSheet {
 			e.printStackTrace();
 		}
 	} 
+	
+	public Sprite[] getSprites() {
+		return sprites;
+	}
 	
 }
