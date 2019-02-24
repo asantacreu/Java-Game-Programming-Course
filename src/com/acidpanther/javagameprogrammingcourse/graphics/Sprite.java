@@ -23,20 +23,6 @@ public class Sprite {
 	public static Sprite spawnWall2 = new Sprite(16, 16, 0, 2, SpriteSheet.spawnLevel);
 	public static Sprite spawnFloor = new Sprite(16, 16, 1, 1, SpriteSheet.spawnLevel);
 	
-	//Player Sprites:
-	public static Sprite player_up = new Sprite(32, 32, 0, 5, SpriteSheet.tiles);
-	public static Sprite player_down = new Sprite(32, 32, 2, 5, SpriteSheet.tiles);
-	public static Sprite player_right = new Sprite(32, 32, 1, 5, SpriteSheet.tiles);
-	
-	public static Sprite player_up_1 = new Sprite(32, 32, 0, 6, SpriteSheet.tiles);
-	public static Sprite player_up_2 = new Sprite(32, 32, 0, 7, SpriteSheet.tiles);
-	
-	public static Sprite player_down_1 = new Sprite(32, 32, 2, 6, SpriteSheet.tiles);
-	public static Sprite player_down_2 = new Sprite(32, 32, 2, 7, SpriteSheet.tiles);
-	
-	public static Sprite player_right_1 = new Sprite(32, 32, 1, 6, SpriteSheet.tiles);
-	public static Sprite player_right_2 = new Sprite(32, 32, 1, 7, SpriteSheet.tiles);
-	
 	//Projectile Sprites:
 	public static Sprite projectileWizard = new Sprite(16, 16, 0, 0, SpriteSheet.projectileWizard);
 	
