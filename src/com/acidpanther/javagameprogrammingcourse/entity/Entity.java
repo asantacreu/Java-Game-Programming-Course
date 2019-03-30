@@ -7,7 +7,7 @@ import com.acidpanther.javagameprogrammingcourse.level.Level;
 
 public abstract class Entity {
 
-	public int x, y;
+	protected int x, y;
 	
 	private boolean removed = false;
 	protected Level level;
@@ -23,6 +23,14 @@ public abstract class Entity {
 	
 	public void render(Screen screen) {
 		
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
 	}
 	
 	public void remove() {

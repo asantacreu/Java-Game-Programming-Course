@@ -57,7 +57,7 @@ public class Game extends Canvas implements Runnable {
 		
 		TileCoordinate playerSpawn = new TileCoordinate(10, 6);
 		player = new Player(playerSpawn.x(), playerSpawn.y(), key);
-		player.init(level);
+		level.add(player);
 	}
 	
 	public static int getScreenWidth() {
@@ -115,7 +115,6 @@ public class Game extends Canvas implements Runnable {
 
 	private void update() {
 		key.update();
-		player.update();
 		level.update();
 	}
 	
@@ -126,10 +125,9 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		screen.clear();
-		int xScroll = player.x - screen.width / 2;
-		int yScroll = player.y - screen.height / 2;
+		int xScroll = player.getX() - screen.width / 2;
+		int yScroll = player.getY() - screen.height / 2;
 		level.render(xScroll,  yScroll,  screen);
-		player.render(screen);
 		
 		for(int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];

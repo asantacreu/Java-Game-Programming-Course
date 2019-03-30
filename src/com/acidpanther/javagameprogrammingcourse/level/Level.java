@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.acidpanther.javagameprogrammingcourse.entity.Entity;
+import com.acidpanther.javagameprogrammingcourse.entity.mob.Player;
 import com.acidpanther.javagameprogrammingcourse.level.tile.Tile;
 
 public class Level {
@@ -15,6 +16,7 @@ public class Level {
 	protected int[] tiles;
 	
 	private List<Entity> entities = new ArrayList<Entity>();
+	private List<Player> players = new ArrayList<Player>();
 	
 	public static Level spawn = new SpawnLevel("/levels/spawn.png");
 	
@@ -41,6 +43,9 @@ public class Level {
 		for(int i = 0; i < entities.size(); i++) {
 			entities.get(i).update();
 		}
+		for(int i = 0; i < players.size(); i++) {
+			players.get(i).update();
+		}
 		clearEntities();
 	}
 	
@@ -48,6 +53,11 @@ public class Level {
 		for(int i = 0; i < entities.size(); i++) {
 			if(entities.get(i).isRemoved()){
 				entities.remove(i);
+			}		
+		}
+		for(int i = 0; i < players.size(); i++) {
+			if(players.get(i).isRemoved()){
+				players.remove(i);
 			}		
 		}
 	}
@@ -83,12 +93,32 @@ public class Level {
 		for(int i = 0; i < entities.size(); i++) {
 			entities.get(i).render(screen);
 		}
+		for(int i = 0; i < players.size(); i++) {
+			players.get(i).render(screen);
+		}
 	}
 	
 	public void add(Entity e) {
 		e.init(this);
-		entities.add(e);
+		if(e instanceof Player) {
+			players.add((Player) e);
+		} else {
+			entities.add(e);
+		}
 	}
+	
+	public List<Player> getPlayer() {
+		return players;
+	}
+	
+	public Player getPlayerAt(int index) {
+		return players.get(index);
+	}
+	
+	public Player getClientPlayer() {
+		return players.get(0);
+	}
+	
 	
 	public Tile getTile(int x, int y) {
 		if(x < 0 || y < 0 || x >= width || y >= height) {

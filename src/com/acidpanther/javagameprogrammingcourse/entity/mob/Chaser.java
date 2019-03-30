@@ -22,7 +22,32 @@ public class Chaser extends Mob {
 		animSprite = down;
 	}
 	
+	private void move() {
+		xa = 0;
+		ya = 0;
+		
+		Player player = level.getClientPlayer();
+		if(x < player.getX()) {
+			xa++;
+		}else if(x > player.getX()) {
+			xa--;
+		}
+		
+		if(y < player.getY()) {
+			ya++;
+		}else if(y > player.getY()) {
+			ya--;
+		}
+		
+		walking = ((xa != 0) || (ya != 0)); 
+		if(walking) {
+			move(xa, ya);
+		}
+	}
+	
 	public void update() {
+		move();
+		
 		if(walking){
 			animSprite.update();
 		} 
@@ -35,15 +60,12 @@ public class Chaser extends Mob {
 		if(ya > 0) animSprite = down;
 		else if(ya < 0) animSprite = up;
 		
-		walking = ((xa != 0) || (ya != 0)); 
-		if(walking) {
-			move(xa, ya);
-		}		
+				
 	}
 	
 	public void render(Screen screen) {
 		sprite = animSprite.getSprite();
-		screen.renderMob(x, y, this);
+		screen.renderMob(x - 16, y - 16, this);
 	}
 	
 	public int getCustomColor(int color) {
