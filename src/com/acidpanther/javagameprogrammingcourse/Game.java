@@ -1,7 +1,6 @@
 package com.acidpanther.javagameprogrammingcourse;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -15,8 +14,6 @@ import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.input.Keyboard;
 import com.acidpanther.javagameprogrammingcourse.input.Mouse;
 import com.acidpanther.javagameprogrammingcourse.level.Level;
-import com.acidpanther.javagameprogrammingcourse.level.RandomLevel;
-import com.acidpanther.javagameprogrammingcourse.level.SpawnLevel;
 import com.acidpanther.javagameprogrammingcourse.level.TileCoordinate;
 
 

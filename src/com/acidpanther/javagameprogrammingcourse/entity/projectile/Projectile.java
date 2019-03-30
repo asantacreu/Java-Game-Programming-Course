@@ -2,10 +2,8 @@ package com.acidpanther.javagameprogrammingcourse.entity.projectile;
 
 import com.acidpanther.javagameprogrammingcourse.entity.Entity;
 import com.acidpanther.javagameprogrammingcourse.entity.spawner.ParticleSpawner;
-import com.acidpanther.javagameprogrammingcourse.entity.particle.Particle;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
-import com.acidpanther.javagameprogrammingcourse.level.tile.Tile;
 
 public abstract class Projectile extends Entity {
 

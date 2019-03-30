@@ -1,7 +1,6 @@
 package com.acidpanther.javagameprogrammingcourse.entity.spawner;
 
 import com.acidpanther.javagameprogrammingcourse.entity.particle.Particle;
-import com.acidpanther.javagameprogrammingcourse.entity.spawner.Spawner.Type;
 import com.acidpanther.javagameprogrammingcourse.level.Level;
 
 public class ParticleSpawner extends Spawner {

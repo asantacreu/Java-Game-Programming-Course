@@ -1,11 +1,9 @@
 package com.acidpanther.javagameprogrammingcourse.entity.mob;
 
 import com.acidpanther.javagameprogrammingcourse.Game;
-import com.acidpanther.javagameprogrammingcourse.entity.projectile.Projectile;
 import com.acidpanther.javagameprogrammingcourse.entity.projectile.WizardProjectile;
 import com.acidpanther.javagameprogrammingcourse.graphics.AnimatedSprite;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
-import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 import com.acidpanther.javagameprogrammingcourse.graphics.SpriteSheet;
 import com.acidpanther.javagameprogrammingcourse.input.Keyboard;
 import com.acidpanther.javagameprogrammingcourse.input.Mouse;

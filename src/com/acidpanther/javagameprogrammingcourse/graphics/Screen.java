@@ -10,7 +10,6 @@ public class Screen {
 	public int width, height;
 	public int[] pixels;
 	private final int MAP_SIZE = 64;
-	private final int MAP_SIZE_MASK = MAP_SIZE - 1;
 	private int xOffset, yOffset;
 	public int[] tiles = new int[MAP_SIZE * MAP_SIZE];
 	private Random random = new Random();

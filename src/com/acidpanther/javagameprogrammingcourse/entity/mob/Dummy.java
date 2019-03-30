@@ -1,6 +1,5 @@
 package com.acidpanther.javagameprogrammingcourse.entity.mob;
 
-import com.acidpanther.javagameprogrammingcourse.entity.mob.Mob.Direction;
 import com.acidpanther.javagameprogrammingcourse.graphics.AnimatedSprite;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.graphics.SpriteSheet;
