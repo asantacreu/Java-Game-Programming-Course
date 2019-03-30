@@ -99,9 +99,9 @@ public class Player extends Mob{
 	public void render(Screen screen) {
 		super.render(screen);
 		
-		Sprite spriteToRender = animSprite.getSprite();
-		int halfPlayerSize = (spriteToRender.getWidth() / 2);
-		screen.renderMob(x - halfPlayerSize, y - halfPlayerSize, spriteToRender, 0);
+		sprite = animSprite.getSprite();
+		int halfPlayerSize = (sprite.getWidth() / 2);
+		screen.renderMob(x - halfPlayerSize, y - halfPlayerSize, this);
 	}
 	
 }

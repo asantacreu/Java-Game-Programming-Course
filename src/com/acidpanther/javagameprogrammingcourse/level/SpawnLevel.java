@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import com.acidpanther.javagameprogrammingcourse.entity.mob.Chaser;
 import com.acidpanther.javagameprogrammingcourse.entity.mob.Dummy;
 
 public class SpawnLevel extends Level{
@@ -27,5 +28,6 @@ public class SpawnLevel extends Level{
 		}
 		
 		add(new Dummy(10, 8));
+		add(new Chaser(10, 8));
 	}
 }

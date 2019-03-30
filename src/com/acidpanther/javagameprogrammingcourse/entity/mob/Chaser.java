@@ -1,12 +1,11 @@
 package com.acidpanther.javagameprogrammingcourse.entity.mob;
 
-import com.acidpanther.javagameprogrammingcourse.entity.mob.Mob.Direction;
 import com.acidpanther.javagameprogrammingcourse.graphics.AnimatedSprite;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.graphics.SpriteSheet;
 
-public class Dummy extends Mob{
-
+public class Chaser extends Mob {
+	
 	private AnimatedSprite down = new AnimatedSprite(SpriteSheet.dummy_down, 32, 32, 3);
 	private AnimatedSprite up = new AnimatedSprite(SpriteSheet.dummy_up, 32, 32, 3);
 	private AnimatedSprite left = new AnimatedSprite(SpriteSheet.dummy_left, 32, 32, 3);
@@ -14,28 +13,16 @@ public class Dummy extends Mob{
 	
 	private AnimatedSprite animSprite = null;
 	
-	private int time = 0;
 	private int xa = 0;
 	private int ya = 0;
 	
-	public Dummy(int x, int y) {
+	public Chaser(int x, int y) {
 		this.x = x << 4;
 		this.y = y << 4;
 		animSprite = down;
 	}
 	
 	public void update() {
-		time++;
-		
-		if(time % (random.nextInt(50) + 30) == 0) {
-			xa = random.nextInt(3) - 1;
-			ya = random.nextInt(3) - 1;
-			if(random.nextInt(4) == 0) {
-				xa = 0;
-				ya = 0;
-			}
-		}
-		
 		if(walking){
 			animSprite.update();
 		} 
@@ -51,7 +38,7 @@ public class Dummy extends Mob{
 		walking = ((xa != 0) || (ya != 0)); 
 		if(walking) {
 			move(xa, ya);
-		}
+		}		
 	}
 	
 	public void render(Screen screen) {
@@ -59,4 +46,10 @@ public class Dummy extends Mob{
 		screen.renderMob(x, y, this);
 	}
 	
+	public int getCustomColor(int color) {
+		if(color == 0xff472BBF) {
+			color = 0xffBA0015;
+		}
+		return color;
+	}
 }

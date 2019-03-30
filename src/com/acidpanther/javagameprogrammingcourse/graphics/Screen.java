@@ -2,7 +2,7 @@ package com.acidpanther.javagameprogrammingcourse.graphics;
 
 import java.util.Random;
 
-import com.acidpanther.javagameprogrammingcourse.entity.mob.Player;
+import com.acidpanther.javagameprogrammingcourse.entity.mob.Mob;
 import com.acidpanther.javagameprogrammingcourse.entity.projectile.Projectile;
 import com.acidpanther.javagameprogrammingcourse.level.tile.Tile;
 
@@ -82,26 +82,22 @@ public class Screen {
 		}
 	}
 	
-	public void renderMob(int xp, int yp, Sprite sprite, int flip) {
+	public void renderMob(int xp, int yp, Mob mob) {
 		xp -= xOffset;
 		yp -= yOffset;
 		
+		Sprite sprite = mob.getSprite();		
 		for(int y = 0; y < sprite.getHeight(); y++) {
 			int ya = y + yp;
 			int ys = y;
-			if(flip ==2 || flip ==3) {
-				ys = ((sprite.getHeight() - 1) - y);
-			}
 			for(int x = 0; x < sprite.getWidth(); x++) {
 				int xa = x + xp;
 				int xs = x;
-				if(flip == 1 || flip == 3) {
-					xs = ((sprite.getWidth() - 1) - x);
-				}
 					
 				if(xa < - sprite.getWidth() || xa >= width || ya < 0 || ya >= height) break;
 				if(xa < 0) xa = 0;
 				int col = sprite.pixels[xs + ys * sprite.getWidth()];
+				col = mob.getCustomColor(col);
 				if(col != 0xffff00ff) {
 					pixels[xa + ya * width] = col;
 				}

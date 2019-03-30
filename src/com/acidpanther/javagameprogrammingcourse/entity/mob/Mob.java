@@ -78,4 +78,12 @@ public abstract class Mob extends Entity {
 		return solid;
 	}
 	
+	public Sprite getSprite() {
+		return sprite;
+	}
+	
+	public int getCustomColor(int color) {
+		return color;
+	}
+	
 }
