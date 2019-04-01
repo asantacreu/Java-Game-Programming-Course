@@ -1,5 +1,7 @@
 package com.acidpanther.javagameprogrammingcourse.entity.mob;
 
+import java.util.List;
+
 import com.acidpanther.javagameprogrammingcourse.graphics.AnimatedSprite;
 import com.acidpanther.javagameprogrammingcourse.graphics.Screen;
 import com.acidpanther.javagameprogrammingcourse.graphics.SpriteSheet;
@@ -26,17 +28,20 @@ public class Chaser extends Mob {
 		xa = 0;
 		ya = 0;
 		
-		Player player = level.getClientPlayer();
-		if(x < player.getX()) {
-			xa++;
-		}else if(x > player.getX()) {
-			xa--;
-		}
-		
-		if(y < player.getY()) {
-			ya++;
-		}else if(y > player.getY()) {
-			ya--;
+		List<Player> players = level.getPlayers(this, 50);
+		if(players.size() > 0) {
+			Player player = players.get(0);
+			if(x < player.getX()) {
+				xa++;
+			}else if(x > player.getX()) {
+				xa--;
+			}
+			
+			if(y < player.getY()) {
+				ya++;
+			}else if(y > player.getY()) {
+				ya--;
+			}
 		}
 		
 		walking = ((xa != 0) || (ya != 0)); 

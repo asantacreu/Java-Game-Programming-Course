@@ -119,6 +119,27 @@ public class Level {
 		return players.get(0);
 	}
 	
+	public List<Player> getPlayers(Entity e, int radius) {
+		List<Player> result = new ArrayList<Player>();
+		
+		int ex = e.getX();
+		int ey = e.getY();
+		for(int i = 0; i< players.size(); i++) {
+			Player player = players.get(i);
+			int x = player.getX();
+			int y = player.getY();
+			
+			int dx = Math.abs(x - ex);
+			int dy = Math.abs(y - ey);
+			double distance = Math.sqrt(dx*dx + dy*dy);
+			if(distance <= radius) {
+				result.add(player);
+			}
+		}
+		
+		return result;
+	}
+	
 	
 	public Tile getTile(int x, int y) {
 		if(x < 0 || y < 0 || x >= width || y >= height) {
