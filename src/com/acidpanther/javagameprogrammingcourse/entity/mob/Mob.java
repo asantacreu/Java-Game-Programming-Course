@@ -22,7 +22,7 @@ public abstract class Mob extends Entity {
 	
 	private List<Projectile> projectiles = new ArrayList<Projectile>();
 	
-	public void move(int xa, int ya) {
+	public void move(double xa, double ya) {
 		if(xa != 0 && ya != 0) {
 			move(xa, 0);
 			move(0, ya);
@@ -34,10 +34,30 @@ public abstract class Mob extends Entity {
 		if(ya > 0) dir = Direction.DOWN;
 		if(ya < 0) dir = Direction.UP;
 		
-		if(!collision(xa, ya)) {
-			x += xa;
-			y += ya;
+		double xAbs = abs(xa);
+		for(int ix = 0; ix < Math.abs(xa); ix++) {
+			if(!collision(xAbs, ya)) {
+				x += xAbs;
+			}
 		}
+		
+		double yAbs = abs(ya);
+		for(int iy = 0; iy < Math.abs(ya); iy++) {
+			if(!collision(xa, yAbs)) {
+				y += yAbs;
+			}
+		}
+	}
+	
+	private int abs(double value) {
+		if(value < 0) {
+			return -1;
+		}
+		else {
+			//Are we sure that when value == 0 we want return 1??
+			return 1;
+		}
+				
 	}
 	
 	public void update() {
@@ -66,13 +86,30 @@ public abstract class Mob extends Entity {
 		}
 	}
 	
-	private boolean collision(int xa, int ya) {
+	private boolean collision(double xa, double ya) {
 		boolean solid = false;
 		
 		for(int c = 0; c < 4; c++) {
-			int xt = ((x + xa) + c % 2 * 14 - 8) / 16;
-			int yt = ((y + ya) + c / 2 * 12 + 3) / 16;
-			if(level.getTile(xt, yt).solid()) solid = true;
+			double xt = ((x + xa) - c % 2 * 16) / 16;
+			double yt = ((y + ya) - c / 2 * 16) / 16;
+			
+			int ix;
+			if(c % 2 == 0) {
+				ix = (int) Math.floor(xt);
+			}
+			else {
+				ix = (int) Math.ceil(xt);
+			}
+			
+			int iy;
+			if(c / 2 == 0) {
+				iy = (int) Math.floor(yt);
+			}
+			else {
+				iy = (int) Math.ceil(yt);
+			}
+			
+			if(level.getTile(ix, iy).solid()) solid = true;
 		}
 		
 		return solid;
