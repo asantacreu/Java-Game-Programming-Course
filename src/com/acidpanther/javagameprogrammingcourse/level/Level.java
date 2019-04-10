@@ -122,12 +122,12 @@ public class Level {
 	public List<Player> getPlayers(Entity e, int radius) {
 		List<Player> result = new ArrayList<Player>();
 		
-		int ex = e.getX();
-		int ey = e.getY();
+		int ex = (int) e.getX();
+		int ey = (int) e.getY();
 		for(int i = 0; i< players.size(); i++) {
 			Player player = players.get(i);
-			int x = player.getX();
-			int y = player.getY();
+			int x = (int) player.getX();
+			int y = (int) player.getY();
 			
 			int dx = Math.abs(x - ex);
 			int dy = Math.abs(y - ey);

@@ -34,17 +34,31 @@ public abstract class Mob extends Entity {
 		if(ya > 0) dir = Direction.DOWN;
 		if(ya < 0) dir = Direction.UP;
 		
-		double xAbs = abs(xa);
-		for(int ix = 0; ix < Math.abs(xa); ix++) {
-			if(!collision(xAbs, ya)) {
-				x += xAbs;
+		while(xa != 0) {
+			if(Math.abs(xa) > 1) {
+				if(!collision(abs(xa), ya)) {
+					x += abs(xa);
+				}
+				xa -= abs(xa);
+			}else {
+				if(!collision(abs(xa), ya)) {
+					x += xa;
+				}
+				xa = 0;
 			}
 		}
 		
-		double yAbs = abs(ya);
-		for(int iy = 0; iy < Math.abs(ya); iy++) {
-			if(!collision(xa, yAbs)) {
-				y += yAbs;
+		while(ya != 0) {
+			if(Math.abs(ya) > 1) {
+				if(!collision(xa, abs(ya))) {
+					y += abs(ya);
+				}
+				ya -= abs(ya);
+			}else {
+				if(!collision(xa, abs(ya))) {
+					y += ya;
+				}
+				ya = 0;
 			}
 		}
 	}

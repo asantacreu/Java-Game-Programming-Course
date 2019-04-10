@@ -7,7 +7,7 @@ import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 
 public abstract class Projectile extends Entity {
 
-	protected final int xOrigin, yOrigin;
+	protected final double xOrigin, yOrigin;
 	protected double angle;
 	protected Sprite sprite;
 	protected double x, y;
@@ -18,7 +18,7 @@ public abstract class Projectile extends Entity {
 	protected double damage;
 	
 	
-	public Projectile(int x, int y, double dir) {
+	public Projectile(double x, double y, double dir) {
 		this.x = x;
 		this.y = y;
 		xOrigin = x;

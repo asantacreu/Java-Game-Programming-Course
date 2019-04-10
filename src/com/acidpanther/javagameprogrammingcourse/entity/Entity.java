@@ -7,7 +7,7 @@ import com.acidpanther.javagameprogrammingcourse.level.Level;
 
 public abstract class Entity {
 
-	protected int x, y;
+	protected double x, y;
 	
 	private boolean removed = false;
 	protected Level level;
@@ -25,11 +25,11 @@ public abstract class Entity {
 		
 	}
 	
-	public int getX() {
+	public double getX() {
 		return x;
 	}
 	
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 	

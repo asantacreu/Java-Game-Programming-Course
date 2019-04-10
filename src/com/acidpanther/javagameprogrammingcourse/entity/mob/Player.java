@@ -21,6 +21,7 @@ public class Player extends Mob{
 	private AnimatedSprite animSprite = null;
 	
 	private int fireRate = 0;
+	private double speed = 1.0;
 	
 	public Player(Keyboard input) {
 		this.input = input;
@@ -43,8 +44,8 @@ public class Player extends Mob{
 			animSprite.setFrame(0);
 		}
 		
-		int xa = 0;
-		int ya = 0;
+		double xa = 0;
+		double ya = 0;
 		if(anim< 7500) { 
 			anim++;
 		}
@@ -52,20 +53,20 @@ public class Player extends Mob{
 			anim  = 0;
 		}
 		if(input.up) {
-			ya-=2;
+			ya-=speed;
 			animSprite = up;
 		}
 		else if(input.down) {
-			ya+=2;
+			ya+=speed;
 			animSprite = down;
 		}
 		
 		if(input.left) {
-			xa-=2;
+			xa-=speed;
 			animSprite = left;
 		}
 		else if(input.right) {
-			xa+=2;
+			xa+=speed;
 			animSprite = right;
 		}
 		
@@ -99,7 +100,7 @@ public class Player extends Mob{
 		
 		sprite = animSprite.getSprite();
 		int halfPlayerSize = (sprite.getWidth() / 2);
-		screen.renderMob(x - halfPlayerSize, y - halfPlayerSize, this);
+		screen.renderMob((int) (x - halfPlayerSize), (int) (y - halfPlayerSize), this);
 	}
 	
 }
