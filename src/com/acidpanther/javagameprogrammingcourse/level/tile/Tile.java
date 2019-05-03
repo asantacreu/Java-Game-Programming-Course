@@ -5,8 +5,6 @@ import com.acidpanther.javagameprogrammingcourse.graphics.Sprite;
 import com.acidpanther.javagameprogrammingcourse.level.tile.spawnLevel.SpawnGrassTile;
 
 public class Tile {
-	
-	public int x, y;
 	public Sprite sprite;
 	
 	public static Tile grass = new GrassTile(Sprite.grass);
